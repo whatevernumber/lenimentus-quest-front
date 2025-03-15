@@ -7,6 +7,11 @@
     import Loader from "$lib/components/Loader.svelte";
     import FinishButton from "$lib/components/FinishButton.svelte";
 
+    import calmMusic from "$lib/music/lights_out.flac";
+    import dangerMusic from "$lib/music/sleeping_orion.flac";
+    import BadEndMusic from "$lib/music/bad_ending.flac";
+    import GoodEndMusic from "$lib/music/good_ending.flac";
+
     let coverWidth = $state(950);
     let showText = $state(true);
     let imageLoaded = $state(false);
@@ -21,10 +26,10 @@
     let windowWidth = $state(0);
 
     const tracks = {
-        calm: 'lights_out.flac',
-        danger: 'sleeping_orion.flac',
-        bad: 'bad_ending.flac',
-        good: 'good_ending.flac',
+        calm: calmMusic,
+        danger: dangerMusic,
+        bad: BadEndMusic,
+        good: GoodEndMusic,
     }
 
     const calmStages = [
@@ -78,7 +83,7 @@
             delay = 1800;
         }
 
-        mainAudio = new Audio('music/' + track);
+        mainAudio = new Audio(track);
         mainAudio.volume = 0.9;
         mainAudio.loop = true;
         setTimeout(playMusic, delay);
@@ -369,6 +374,11 @@
             position: initial;
             margin: auto;
             letter-spacing: 0.5em;
+        }
+
+        .loader,
+        .mini_loader {
+            padding: 50px 0;
         }
     }
 

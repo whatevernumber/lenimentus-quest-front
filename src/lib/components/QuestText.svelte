@@ -103,7 +103,7 @@
 
     @media (max-width: 1024px) {
         .content {
-            width: 70%;
+            width: 505px;
         }
     }
 
@@ -122,8 +122,13 @@
 
     @media(max-width: 758px) {
         .content {
-            width: 100%;
             min-height: 200px;
+        }
+    }
+
+    @media(max-width: 500px) {
+        .content {
+            width: 100%;
         }
     }
 </style>

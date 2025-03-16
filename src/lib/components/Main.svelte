@@ -7,10 +7,10 @@
     import Loader from "$lib/components/Loader.svelte";
     import FinishButton from "$lib/components/FinishButton.svelte";
 
-    import calmMusic from "$lib/music/lights_out.flac";
-    import dangerMusic from "$lib/music/sleeping_orion.flac";
-    import BadEndMusic from "$lib/music/bad_ending.flac";
-    import GoodEndMusic from "$lib/music/good_ending.flac";
+    import calmMusic from "$lib/music/lights_out.mp3";
+    import dangerMusic from "$lib/music/sleeping_orion.mp3";
+    import BadEndMusic from "$lib/music/bad_ending.mp3";
+    import GoodEndMusic from "$lib/music/good_ending.mp3";
 
     let coverWidth = $state(950);
     let showText = $state(true);
@@ -110,7 +110,7 @@
             audioEffect.pause();
         }
 
-        audioEffect = new Audio('music/sounds/' + nextStage + '.ogg');
+        audioEffect = new Audio('music/sounds/' + nextStage + '.mp3');
         audioEffect.play();
         audioEffect.volume = 0.9;
 

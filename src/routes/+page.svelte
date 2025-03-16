@@ -32,7 +32,7 @@
         </header>
         <Main/>
         <footer class="leni_footer">
-            <p class="copyright">©Эл Фарбер</p>
+            <a class="copyright" href="https://github.com/whatevernumber" target="_blank">©Эл Фарбер</a>
         </footer>
     </div>
 {/if}
@@ -148,6 +148,7 @@
     }
 
     .copyright {
+        cursor: pointer;
         margin-top: 10px;
     }
 

@@ -164,7 +164,8 @@
         color: rgba(255, 255, 255, 0.65);
     }
 
-    .book_link:hover {
+    .book_link:hover,
+    .copyright:hover {
         opacity: 0.7;
     }
 

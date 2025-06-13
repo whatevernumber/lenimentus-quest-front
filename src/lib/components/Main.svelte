@@ -36,7 +36,7 @@
         },
         finished: {
           ru: 'Узнать продолжение истории',
-          en: 'Check the book---russian only for now :('
+          en: 'Check the book---russian only for now :&nbsp;('
         },
     }
 

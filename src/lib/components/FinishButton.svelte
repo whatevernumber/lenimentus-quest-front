@@ -3,7 +3,7 @@
 </script>
 
 <div class="finish_button_wrapper">
-    <button class="finish_button" onclick={action}>{buttonText}</button>
+    <button class="finish_button" onclick={action}>{@html buttonText}</button>
 </div>
 
 <style>

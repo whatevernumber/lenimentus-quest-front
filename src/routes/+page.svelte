@@ -72,10 +72,10 @@
         </div>
 
         <div class="language_choice">
-            <div class="language_button { preferredLanguage === 'ru' ? 'active' : ''}" onclick={() => setLanguage('ru')}>
+            <div class="language_button { preferredLanguage === 'ru' ? 'active' : ''}" onclick={() => setLanguage('ru')} role="button" tabindex="1">
                 ru
             </div>
-            <div class="language_button { preferredLanguage === 'en' ? 'active' : ''}" onclick={() => setLanguage('en')}>
+            <div class="language_button { preferredLanguage === 'en' ? 'active' : ''}" onclick={() => setLanguage('en')} role="button" tabindex="1">
                 en
             </div>
         </div>
@@ -85,11 +85,11 @@
 {#if start}
     <div class="quest_wrapper" transition:fade|global={{ delay: 100, duration: 200 }}>
         <header class="leni_header">
-            <a class="book_link" href="https://www.litres.ru/el-farber/lenimentus/" target="_blank">Ссылка на книгу</a>
+            <a class="book_link" href="https://www.litres.ru/el-farber/lenimentus/" target="_blank">{states.link[preferredLanguage]}</a>
         </header>
         <Main {preferredLanguage} />
         <footer class="leni_footer">
-            <a class="copyright" href="https://github.com/whatevernumber" target="_blank">©Эл Фарбер</a>
+            <a class="copyright" href="https://github.com/whatevernumber" target="_blank">©{states.copyright[preferredLanguage]}</a>
         </footer>
     </div>
 {/if}

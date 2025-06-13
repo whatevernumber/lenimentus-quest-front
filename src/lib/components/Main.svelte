@@ -29,6 +29,17 @@
     const questKey = 'quest.text' + (preferredLanguage === 'ru' ? '' : '_' + preferredLanguage);
     const actionKey = 'quest.action' + (preferredLanguage === 'ru' ? '' : '_' + preferredLanguage);
 
+    const statesTranslate = {
+        failed: {
+            ru: 'Посмотреть ещё раз',
+            en: 'Try again',
+        },
+        finished: {
+          ru: 'Узнать продолжение истории',
+          en: 'Check the book---russian only for now :('
+        },
+    }
+
     const tracks = {
         calm: calmMusic,
         danger: dangerMusic,
@@ -284,9 +295,9 @@
     {/if}
     {#if (endingStages.some((el) => el === stage) && imageLoaded && !actionLoading)}
         <div class="special_actions">
-            <FinishButton action={clearStorage} buttonText="Посмотреть ещё раз" />
+            <FinishButton action={clearStorage} buttonText={statesTranslate.failed[preferredLanguage]} />
             {#if stage === successStage}
-                <FinishButton action={openBookPage} buttonText="Узнать продолжение истории" />
+                <FinishButton action={openBookPage} buttonText={statesTranslate.finished[preferredLanguage]} />
             {/if}
         </div>
     {/if}

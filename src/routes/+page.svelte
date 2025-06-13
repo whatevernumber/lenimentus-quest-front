@@ -3,25 +3,82 @@
     import {fade} from 'svelte/transition';
     import {onMount} from "svelte";
 
+    let states = {
+        start: {
+            ru: 'Начать',
+            en: 'Start',
+        },
+        continue: {
+            ru: 'Продолжить',
+            en: 'Continue',
+        },
+        link: {
+            ru: 'Ссылка на книгу',
+            en: ''
+        },
+        copyright: {
+            ru: 'Эл Фарбер',
+            en: 'L Farber',
+        }
+    }
+
     let start = $state(false);
-    let buttonText = $state('Начать');
+    let buttonText = $state('');
     let glitchContinue = $state(false);
+    let preferredLanguage = $state('ru');
+    let userStages = $state();
 
     onMount(() => {
-        let userStages = JSON.parse(localStorage.getItem("stages"));
-        if (userStages && userStages.length) {
-            buttonText = 'Продолжить';
-            glitchContinue = true;
-        }
+        userStages = JSON.parse(localStorage.getItem("stages"));
+        getPreferredLanguage();
+        setButtonText();
     });
+
+    const setLanguage = (lang) => {
+        localStorage.setItem('language', lang);
+        preferredLanguage = lang;
+        setButtonText();
+    }
+
+    const getPreferredLanguage = () => {
+        let userLanguage = localStorage.getItem("language");
+
+        if (!userLanguage) {
+            localStorage.setItem('language', preferredLanguage);
+        } else {
+            preferredLanguage = userLanguage;
+        }
+    }
+
+    const setButtonText = () => {
+        if (userStages && userStages.length) {
+            buttonText = states['continue'][preferredLanguage];
+            glitchContinue = true;
+        } else {
+            buttonText = states['start'][preferredLanguage];
+        }
+    }
 
 </script>
 
 {#if !start}
-    <div class="begin_button_wrapper">
-        <button class="begin_button glitch glitch_{glitchContinue ? 'continue' : 'start'}" onclick={() => start = true}>
-            {buttonText}
-        </button>
+    <div class="start_wrapper">
+        <div class="begin_button_wrapper">
+            <button class="begin_button glitch glitch_{glitchContinue ? 'continue' : 'start'}" onclick={() => start = true}
+                    style="--text: '{buttonText}'"
+            >
+                {buttonText}
+            </button>
+        </div>
+
+        <div class="language_choice">
+            <div class="language_button { preferredLanguage === 'ru' ? 'active' : ''}" onclick={() => setLanguage('ru')}>
+                ru
+            </div>
+            <div class="language_button { preferredLanguage === 'en' ? 'active' : ''}" onclick={() => setLanguage('en')}>
+                en
+            </div>
+        </div>
     </div>
 {/if}
 
@@ -30,7 +87,7 @@
         <header class="leni_header">
             <a class="book_link" href="https://www.litres.ru/el-farber/lenimentus/" target="_blank">Ссылка на книгу</a>
         </header>
-        <Main/>
+        <Main {preferredLanguage} />
         <footer class="leni_footer">
             <a class="copyright" href="https://github.com/whatevernumber" target="_blank">©Эл Фарбер</a>
         </footer>
@@ -38,9 +95,14 @@
 {/if}
 
 <style>
-    .begin_button_wrapper,
+    .start_wrapper,
     .quest_wrapper {
         margin: auto;
+    }
+
+    .start_wrapper {
+        display: flex;
+        flex-direction: column;
     }
 
     .begin_button {
@@ -78,21 +140,12 @@
 
     .glitch:before,
     .glitch:after {
+        content: var(--text);
         display: block;
         position: absolute;
         left: 50px;
         top: 30px;
         opacity: 0.8;
-    }
-
-    .glitch_continue:before,
-    .glitch_continue:after {
-        content: "Продолжить";
-    }
-
-    .glitch_start:before,
-    .glitch_start:after {
-        content: "Начать";
     }
 
     .glitch:before {
@@ -105,6 +158,33 @@
         animation: glitch-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
         color: #E998e3;
         z-index: -2;
+    }
+
+    .language_choice {
+        margin-top: 100px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        font-size: 35px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .language_button {
+        background-image: url('/img/special_group.svg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
+        padding: 30px 40px;
+        cursor: pointer;
+    }
+
+    .language_button.active {
+        text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+    }
+
+    .language_button:hover {
+        text-shadow: -1px -1px 0 var(--background-pink), 1px -1px 0 var(--background-pink), -1px 1px 0 var(--background-pink), 1px 1px 0 var(--background-pink);
     }
 
     @keyframes glitch-color {

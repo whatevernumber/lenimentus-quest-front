@@ -12,6 +12,8 @@
     import BadEndMusic from "$lib/music/bad_ending.mp3";
     import GoodEndMusic from "$lib/music/good_ending.mp3";
 
+    let { preferredLanguage } = $props();
+
     let coverWidth = $state(950);
     let showText = $state(true);
     let imageLoaded = $state(false);
@@ -24,6 +26,8 @@
     let specialAction = $state(null);
     let actionLoading = $state(false);
     let windowWidth = $state(0);
+    const questKey = 'quest.text' + (preferredLanguage === 'ru' ? '' : '_' + preferredLanguage);
+    const actionKey = 'quest.action' + (preferredLanguage === 'ru' ? '' : '_' + preferredLanguage);
 
     const tracks = {
         calm: calmMusic,
@@ -263,13 +267,15 @@
         {/if}
         {#if showText}
             <div class="content_wrapper">
-                <QuestText text={stageDetails?.stage[0]['quest.text'] ?? ''} {imageLoaded}/>
+                <QuestText text={stageDetails?.stage[0][questKey] ?? ''} {imageLoaded}/>
             </div>
         {/if}
     </div>
     {#if stageDetails?.actions && !actionLoading}
         <Options bind:action={pickedAction} bind:specialAction={specialAction} {imageLoaded} {stage}
-                 fetchAction={prepareForNextStage} options={stageDetails.actions} stages={userStages}/>
+                 fetchAction={prepareForNextStage} options={stageDetails.actions} stages={userStages}
+                 {actionKey}
+        />
     {/if}
     {#if actionLoading && imageLoaded || !imageLoaded && windowWidth > 768}
         <div class="loader">

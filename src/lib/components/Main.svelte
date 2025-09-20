@@ -302,7 +302,9 @@
         </div>
     {/if}
     <div class="logo">
-        L E N I M E N T U S
+        <a href="https://lenimentus.ru">
+            L E N I M E N T U S
+        </a>
     </div>
 </section>
 

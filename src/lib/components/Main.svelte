@@ -399,7 +399,7 @@
         .quest_main {
             width: 100%;
             flex-direction: column;
-            row-gap: 15px;
+            row-gap: 10px;
             align-items: center;
         }
 

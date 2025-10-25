@@ -84,9 +84,6 @@
 
 {#if start}
     <div class="quest_wrapper" transition:fade|global={{ delay: 100, duration: 200 }}>
-        <header class="leni_header">
-            <a class="book_link" href="https://www.litres.ru/el-farber/lenimentus/" >{states.link[preferredLanguage]}</a>
-        </header>
         <Main {preferredLanguage} />
         <footer class="leni_footer">
             <a class="book_link" href="https://www.litres.ru/el-farber/lenimentus/" target="_blank">{states.link[preferredLanguage]}</a>
@@ -218,18 +215,13 @@
         max-width: 100%;
     }
 
-    .leni_footer,
-    .leni_header {
+    .leni_footer {
         text-align: center;
         padding: 15px 0;
     }
 
     .leni_footer .book_link {
         display: none;
-    }
-
-    .leni_header {
-        margin-bottom: 10px;
     }
 
     .copyright {
@@ -274,10 +266,6 @@
     }
 
     @media (max-width: 600px) {
-        .leni_header {
-            display: none;
-        }
-
         .leni_footer .book_link {
             display: block;
         }

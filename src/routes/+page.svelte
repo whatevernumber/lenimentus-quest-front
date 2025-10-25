@@ -13,8 +13,8 @@
             en: 'Continue',
         },
         link: {
-            ru: 'Ссылка на книгу',
-            en: ''
+            ru: 'lenimentus',
+            en: 'lenimentus'
         },
         copyright: {
             ru: 'Эл Фарбер',
@@ -240,7 +240,7 @@
         font-size: 16px;
         line-height: 20px;
         text-align: center;
-        letter-spacing: 0.5em;
+        letter-spacing: 0.7em;
         color: rgba(255, 255, 255, 0.65);
     }
 
@@ -252,6 +252,15 @@
     @media (max-width: 850px) {
         .begin_button.glitch {
             font-size: 30px;
+        }
+    }
+
+    @media (max-width: 1000px) {
+        .leni_footer {
+            position: fixed;
+            bottom: 10px;
+            left: 0;
+            width: 100vw;
         }
     }
 </style>

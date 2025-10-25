@@ -16,6 +16,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@splidejs/svelte-splide": "^0.2.9",
 		"@sveltejs/adapter-node": "^5.2.9"
 	}
 }

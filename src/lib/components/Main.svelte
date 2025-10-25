@@ -1,4 +1,7 @@
 <script>
+    import { Splide, SplideSlide } from '@splidejs/svelte-splide';
+    import '@splidejs/svelte-splide/css';
+
     import Image from "$lib/components/Image.svelte";
     import QuestText from "$lib/components/QuestText.svelte";
     import Options from "$lib/components/Options.svelte";
@@ -300,6 +303,19 @@
                 <FinishButton action={openBookPage} buttonText={statesTranslate.finished[preferredLanguage]} />
             {/if}
         </div>
+
+        <div class="fixed_special_actions">
+            <Splide>
+                <SplideSlide>
+                    <FinishButton action={clearStorage} buttonText={statesTranslate.failed[preferredLanguage]} />
+                </SplideSlide>
+                {#if stage === successStage}
+                    <SplideSlide>
+                        <FinishButton action={openBookPage} buttonText={statesTranslate.finished[preferredLanguage]} />
+                    </SplideSlide>
+                {/if}
+            </Splide>
+        </div>
     {/if}
     <div class="logo">
         <a href="https://lenimentus.ru">
@@ -321,7 +337,7 @@
         position: relative;
         padding: 40px 0 5px 0;
         width: 1000px;
-        height: 800px;
+        height: 80vh;
         margin: auto;
         display: flex;
         flex-direction: column;
@@ -371,6 +387,10 @@
         color: #9195ad61;
     }
 
+    .fixed_special_actions {
+        display: none;
+    }
+
     @media (max-width: 1000px) {
         .quest_main {
             width: 100%;
@@ -382,14 +402,23 @@
         .main_section {
             width: 100%;
             height: auto;
+            padding: 10px 0 200px;
         }
 
         .special_actions {
-            margin-top: 40px;
+            display: none;
+        }
+
+        .fixed_special_actions {
+            display: block;
+            width: 100vw;
+            position: fixed;
+            bottom: 70px;
+            left: 0;
         }
 
         .logo {
-            display: flex;
+            display: none;
             position: initial;
             margin: auto;
             letter-spacing: 0.5em;
@@ -397,7 +426,12 @@
 
         .loader,
         .mini_loader {
-            padding: 50px 0;
+            position: fixed;
+            width: 100vw;
+            left: 0;
+            bottom: 50px;
+            padding: 20px 0;
+            z-index: 20;
         }
     }
 
@@ -408,6 +442,7 @@
         }
 
         .logo {
+            margin-top: 10px;
             font-size: 15px;
             letter-spacing: 0.2em;
         }
@@ -427,6 +462,17 @@
 
         .mini_loader {
             display: block;
+        }
+    }
+
+    @media (max-height: 670px) {
+        .main_section {
+            padding-top: 10px;
+            height: 85vh;
+        }
+
+        .logo {
+            display: none;
         }
     }
 </style>

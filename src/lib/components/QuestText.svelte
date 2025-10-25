@@ -84,7 +84,7 @@
     }
 
     .content {
-        height: 500px;
+        height: 50vh;
         width: 400px;
         margin: auto;
         padding: 20px;
@@ -103,7 +103,12 @@
 
     @media (max-width: 1024px) {
         .content {
-            width: 505px;
+            width: 90vw;
+            height: 40vh;
+        }
+
+        .loader_overflow {
+            height: 35vh;
         }
     }
 
@@ -114,7 +119,7 @@
     }
 
     .loader_overflow {
-        height: 400px;
+        height: 46vh;
         overflow-y: auto;
         scrollbar-width: thin;
         scrollbar-color: #c5cd9ede transparent;
@@ -123,6 +128,11 @@
     @media(max-width: 758px) {
         .content {
             min-height: 200px;
+            height: 35vh;
+        }
+
+        .loader_overflow {
+            height: 30vh;
         }
     }
 

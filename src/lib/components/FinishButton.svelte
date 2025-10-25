@@ -38,12 +38,16 @@
         transition-duration: 200ms;
     }
 
-    @media (max-width: 500px) {
-        .finish_button {
-            display: flex;
-            justify-content: center;
-            width: 200px;
-            margin: 20px auto;
+    @media (max-width: 1000px) {
+        .finish_button_wrapper {
+            width: 70vw;
+            display: block;
+            text-align: center;
         }
+
+        .finish_button {
+            margin-top: 10px;
+        }
+
     }
 </style>

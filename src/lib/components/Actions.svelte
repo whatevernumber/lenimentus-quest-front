@@ -1,4 +1,6 @@
 <script>
+    import { Splide, SplideSlide } from '@splidejs/svelte-splide';
+    import '@splidejs/svelte-splide/css';
     let {action = $bindable(), specialAction = $bindable(), options, stage, fetchAction, stages, actionKey} = $props();
 
     const specialLevels = [
@@ -122,11 +124,25 @@
     {/each}
 </div>
 
+<div class="fixed_buttons">
+    <Splide>
+    {#each options as option, index}
+        <SplideSlide>
+            <div class="animated_button" onkeydown={(e) => handleKey(e, option['quest.action'], index, option['ss.stage'])} onclick={() => selectAction(option['quest.action'], index, option['ss.stage'])} role="button" tabindex="{index + 1}">
+                <img class="image_blurred" src={"/img/quest/stage_" + pickTheRightImage(index, option)} alt="Иллюстрация">
+                <div class="action_text { positionIndexClasses[index] ?? ''} {checkLongActionText(option['quest.action']) ? 'long' : ''}">{option[actionKey]}</div>
+            </div>
+        </SplideSlide>
+    {/each}
+    </Splide>
+</div>
+
+
 <style>
     .animated_button {
         width: 250px;
         position: relative;
-        padding: 10px;
+        padding: 1.2rem 0.8rem;
         border: none;
         border-radius: 5px;
 
@@ -166,7 +182,7 @@
     .image_blurred {
         position: absolute;
         width: 260px;
-        height: 70px;
+        height: 5vh;
         filter: blur(10px);
         border-radius: 20px;
     }
@@ -203,15 +219,70 @@
         z-index: 5;
     }
 
-    .action_text {
-        padding: 20px;
-    }
-
     .action_text.right {
         margin-left: auto;
     }
 
     .action_text.center {
         margin: auto;
+    }
+
+    .fixed_buttons {
+        display: none;
+    }
+
+    @media (max-width: 1000px) {
+        .button_wrapper {
+            display: none;
+        }
+
+        .animated_button {
+            width: 100vw;
+            box-sizing: border-box;
+            text-align: center;
+            border-radius: unset;
+            outline: none;
+            height: 80px
+        }
+
+        .image_blurred {
+            left: 0;
+            width: 100vw;
+            height: 15vh;
+            border-radius: unset;
+        }
+
+        .action_text,
+        .action_text.right,
+        .action_text.left {
+            margin: auto;
+            width: 70vw;
+        }
+    }
+
+    :global {
+        .splide__pagination.splide__pagination--ltr {
+            bottom: -10%;
+        }
+
+        .splide__pagination__page {
+            opacity: .9;
+        }
+
+        li:nth-child(3) .splide__pagination__page {
+            background-color: var(--background-pink);
+        }
+
+        li:nth-child(2) .splide__pagination__page {
+            background-color: var(--background-blue);
+        }
+
+        li:nth-child(1) .splide__pagination__page {
+            background-color: var(--background-green);
+        }
+
+        .splide__arrow  {
+            background-color: var(--background-blue);
+        }
     }
 </style>

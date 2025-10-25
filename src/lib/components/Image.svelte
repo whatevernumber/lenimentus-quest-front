@@ -39,11 +39,12 @@
 
     .frame.image {
         overflow: hidden;
+        text-align: center;
     }
 
     .image {
         width: 505px;
-        height: 500px;
+        height: 50vh;
         transition: width 0.2s;
     }
 
@@ -91,6 +92,24 @@
 
         to {
             transform: translate(0);
+        }
+    }
+
+    @media (max-width: 1000px) {
+        .image {
+            width: 90vw;
+            height: 30vh;
+            background-color: black;
+        }
+
+        .main_cover {
+            object-fit: contain;
+        }
+    }
+
+    @media (max-width: 500px) {
+        .image {
+            width: 100%;
         }
     }
 </style>

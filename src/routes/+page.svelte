@@ -269,7 +269,7 @@
         }
 
         .quest_wrapper {
-            margin-top: 10px;
+            margin-top: 5px;
         }
     }
 

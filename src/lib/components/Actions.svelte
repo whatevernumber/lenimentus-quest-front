@@ -296,5 +296,9 @@
         .splide__arrow  {
             background-color: var(--background-blue);
         }
+
+        .splide__arrow:disabled {
+            display: none;
+        }
     }
 </style>

@@ -248,6 +248,10 @@
 
         // prevent from copying, selecting
         document.addEventListener('contextmenu', event => event.preventDefault());
+
+        if (windowWidth < 768) {
+            scrollTo();
+        }
     });
 
 

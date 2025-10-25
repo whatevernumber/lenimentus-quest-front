@@ -104,11 +104,11 @@
     @media (max-width: 1023px) {
         .content {
             width: 90vw;
-            height: 40vh;
+            height: 38vh;
         }
 
         .loader_overflow {
-            height: 35vh;
+            height: 34vh;
         }
     }
 

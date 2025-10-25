@@ -124,7 +124,7 @@
     {/each}
 </div>
 
-<div class="fixed_buttons">
+<div class="fixed_buttons_wrapper">
     <Splide>
     {#each options as option, index}
         <SplideSlide>
@@ -227,13 +227,17 @@
         margin: auto;
     }
 
-    .fixed_buttons {
+    .fixed_buttons_wrapper {
         display: none;
     }
 
     @media (max-width: 1000px) {
         .button_wrapper {
             display: none;
+        }
+
+        .fixed_buttons_wrapper {
+            display: block;
         }
 
         .animated_button {

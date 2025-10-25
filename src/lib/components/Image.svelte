@@ -48,6 +48,10 @@
         transition: width 0.2s;
     }
 
+    .image .main_cover {
+        object-fit: cover;
+    }
+
     .frame {
         box-sizing: border-box;
         border: 3px solid #8ACBD5;
@@ -102,7 +106,11 @@
             background-color: black;
         }
 
-        .main_cover {
+        .image .main_cover {
+            object-fit: cover;
+        }
+
+        .image.frame .main_cover {
             object-fit: contain;
         }
     }

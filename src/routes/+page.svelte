@@ -85,11 +85,12 @@
 {#if start}
     <div class="quest_wrapper" transition:fade|global={{ delay: 100, duration: 200 }}>
         <header class="leni_header">
-            <a class="book_link" href="https://www.litres.ru/el-farber/lenimentus/" target="_blank">{states.link[preferredLanguage]}</a>
+            <a class="book_link" href="https://www.litres.ru/el-farber/lenimentus/" >{states.link[preferredLanguage]}</a>
         </header>
         <Main {preferredLanguage} />
         <footer class="leni_footer">
-            <a class="copyright" href="https://github.com/whatevernumber" target="_blank">©{states.copyright[preferredLanguage]}</a>
+            <a class="copyright" href="mailto:lenimentus@protonmail.com">©{states.copyright[preferredLanguage]}</a>
+            <a class="book_link" href="https://www.litres.ru/el-farber/lenimentus/" target="_blank">{states.link[preferredLanguage]}</a>
         </footer>
     </div>
 {/if}
@@ -223,6 +224,10 @@
         padding: 15px 0;
     }
 
+    .leni_footer .book_link {
+        display: none;
+    }
+
     .leni_header {
         margin-bottom: 10px;
     }
@@ -258,9 +263,34 @@
     @media (max-width: 1000px) {
         .leni_footer {
             position: fixed;
-            bottom: 10px;
+            bottom: 5px;
             left: 0;
             width: 100vw;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .leni_header {
+            display: none;
+        }
+
+        .leni_footer .book_link {
+            display: block;
+        }
+
+        .leni_footer {
+            display: flex;
+            column-gap: 15px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .copyright {
+            margin-top: 0;
+        }
+
+        .copyright, .book_link {
+            letter-spacing: 0.5em;
         }
     }
 </style>

@@ -429,7 +429,7 @@
             position: fixed;
             width: 100vw;
             left: 0;
-            bottom: 50px;
+            bottom: 30px;
             padding: 20px 0;
             z-index: 20;
         }

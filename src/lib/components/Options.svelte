@@ -31,7 +31,7 @@
             padding: 0;
             left: 0;
             bottom: 0;
-            height: 140px;
+            height: 130px;
         }
     }
 </style>

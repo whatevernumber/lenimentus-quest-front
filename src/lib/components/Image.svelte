@@ -31,6 +31,7 @@
 
 <div class="{ (imageLoaded ? 'frame' : '') + ' image'}">
     {#key src}
+        <img class="blurred_cover" {src} alt="Обложка главы размытая" out:fade={ {duration:500, opacity: 25} } in:fade={ {duration: 1000} }>
         <img {width} class="main_cover" {src} alt="Обложка главы" out:fly={ {duration:500, opacity: 25} } in:fade={ {duration: 1000} }>
     {/key}
 </div>
@@ -64,6 +65,10 @@
         transition: all 5s ease;
         border-radius: 20px;
         animation: move 60s cubic-bezier(1, 0.14, 0.75, 0.67) 2s both infinite;
+    }
+
+    .blurred_cover {
+        display: none;
     }
 
     @media (max-width: 500px) {
@@ -101,6 +106,7 @@
 
     @media (max-width: 1023px) {
         .image {
+            position: relative;
             width: 90vw;
             height: 30vh;
             background-color: black;
@@ -112,6 +118,18 @@
 
         .image.frame .main_cover {
             object-fit: contain;
+
+        }
+
+        .blurred_cover {
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(10px);
         }
     }
 

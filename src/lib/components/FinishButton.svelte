@@ -47,6 +47,8 @@
 
         .finish_button {
             margin-top: 10px;
+            font-size: medium;
+            padding: 5px;
         }
 
     }

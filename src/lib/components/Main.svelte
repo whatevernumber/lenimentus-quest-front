@@ -217,7 +217,7 @@
 
     const loadImage = () => {
         imageLoaded = false;
-        coverWidth = 500;
+        coverWidth = '100%';
         setTimeout(() => {
             imageLoaded = true;
         }, 5000);
@@ -411,10 +411,10 @@
 
         .fixed_special_actions {
             display: block;
-            width: 100vw;
             position: fixed;
-            bottom: 70px;
+            bottom: 50px;
             left: 0;
+            width: 100vw;
         }
 
         .logo {

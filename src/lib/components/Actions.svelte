@@ -1,6 +1,7 @@
 <script>
     import { Splide, SplideSlide } from '@splidejs/svelte-splide';
     import '@splidejs/svelte-splide/css';
+
     let {action = $bindable(), specialAction = $bindable(), options, stage, fetchAction, stages, actionKey} = $props();
 
     const specialLevels = [
@@ -128,9 +129,9 @@
     <Splide>
     {#each options as option, index}
         <SplideSlide>
-            <div class="animated_button" onkeydown={(e) => handleKey(e, option['quest.action'], index, option['ss.stage'])} onclick={() => selectAction(option['quest.action'], index, option['ss.stage'])} role="button" tabindex="{index + 1}">
+            <div class="animated_button" onkeydown={(e) => handleKey(e, option['quest.action'], index, option['ss.stage'])} role="button" tabindex="{index + 1}">
                 <img class="image_blurred" src={"/img/quest/stage_" + pickTheRightImage(index, option)} alt="Иллюстрация">
-                <div class="action_text { positionIndexClasses[index] ?? ''} {checkLongActionText(option['quest.action']) ? 'long' : ''}">{option[actionKey]}</div>
+                <div class="action_text { positionIndexClasses[index] ?? ''} {checkLongActionText(option['quest.action']) ? 'long' : ''}" onclick={() => selectAction(option['quest.action'], index, option['ss.stage'])}>{option[actionKey]}</div>
             </div>
         </SplideSlide>
     {/each}
@@ -247,6 +248,13 @@
             border-radius: unset;
             outline: none;
             height: 80px
+        }
+
+        .animated_button:hover {
+            background-color: unset;
+            text-shadow: none;
+            transform: none;
+            outline: none;
         }
 
         .image_blurred {

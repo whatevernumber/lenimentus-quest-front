@@ -22,7 +22,7 @@
         height: 20vh;
     }
 
-    @media (max-width: 1000px) {
+    @media (max-width: 1023px) {
         .options {
             width: 100vw;
             position: fixed;

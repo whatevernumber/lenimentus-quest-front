@@ -38,7 +38,7 @@
         transition-duration: 200ms;
     }
 
-    @media (max-width: 1000px) {
+    @media (max-width: 1023px) {
         .finish_button_wrapper {
             width: 70vw;
             display: block;

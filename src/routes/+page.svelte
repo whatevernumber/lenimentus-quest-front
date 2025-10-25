@@ -89,8 +89,8 @@
         </header>
         <Main {preferredLanguage} />
         <footer class="leni_footer">
-            <a class="copyright" href="mailto:lenimentus@protonmail.com">©{states.copyright[preferredLanguage]}</a>
             <a class="book_link" href="https://www.litres.ru/el-farber/lenimentus/" target="_blank">{states.link[preferredLanguage]}</a>
+            <a class="copyright" href="mailto:lenimentus@protonmail.com">©{states.copyright[preferredLanguage]}</a>
         </footer>
     </div>
 {/if}
@@ -260,12 +260,16 @@
         }
     }
 
-    @media (max-width: 1000px) {
+    @media (max-width: 1023px) {
         .leni_footer {
             position: fixed;
-            bottom: 5px;
+            bottom: 0;
             left: 0;
             width: 100vw;
+        }
+
+        .quest_wrapper {
+            margin-top: 10px;
         }
     }
 

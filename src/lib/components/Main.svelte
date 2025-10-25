@@ -391,7 +391,7 @@
         display: none;
     }
 
-    @media (max-width: 1000px) {
+    @media (max-width: 1023px) {
         .quest_main {
             width: 100%;
             flex-direction: column;
@@ -402,7 +402,7 @@
         .main_section {
             width: 100%;
             height: auto;
-            padding: 10px 0 200px;
+            padding: 10px 0 0;
         }
 
         .special_actions {
@@ -429,7 +429,7 @@
             position: fixed;
             width: 100vw;
             left: 0;
-            bottom: 25px;
+            bottom: 15px;
             padding: 20px 0;
             z-index: 20;
         }

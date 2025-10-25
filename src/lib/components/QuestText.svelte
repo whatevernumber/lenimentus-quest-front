@@ -101,7 +101,7 @@
         margin: auto;
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1023px) {
         .content {
             width: 90vw;
             height: 40vh;

@@ -259,10 +259,6 @@
             left: 0;
             width: 100vw;
         }
-
-        .quest_wrapper {
-            margin-top: 5px;
-        }
     }
 
     @media (max-width: 600px) {

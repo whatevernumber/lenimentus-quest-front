@@ -2,7 +2,7 @@
 
 [quest.lenimentus.ru](https://quest.lenimentus.ru)
 
-Online text quest made for promoting a sci-fi book.
+Online text adventure for promoting a sci-fi book.
 
 ![readme.png](readme.png)
 

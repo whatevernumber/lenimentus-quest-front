@@ -181,10 +181,6 @@
         text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
     }
 
-    .language_button:hover {
-        text-shadow: -1px -1px 0 var(--background-pink), 1px -1px 0 var(--background-pink), -1px 1px 0 var(--background-pink), 1px 1px 0 var(--background-pink);
-    }
-
     @keyframes glitch-color {
         0% {
             transform: translate(0);

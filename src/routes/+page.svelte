@@ -59,6 +59,11 @@
         }
     }
 
+    const handleKey = (event, action) => {
+        if (event.code === 'Space' || event.code === 'Enter') {
+            setLanguage(action)
+        }
+    }
 </script>
 
 {#if !start}
@@ -72,10 +77,10 @@
         </div>
 
         <div class="language_choice">
-            <div class="language_button { preferredLanguage === 'ru' ? 'active' : ''}" onclick={() => setLanguage('ru')} role="button" tabindex="1">
+            <div class="language_button { preferredLanguage === 'ru' ? 'active' : ''}" onclick={() => setLanguage('ru')} onkeydown={(e) => handleKey(e, 'ru')} role="button" tabindex="1">
                 ru
             </div>
-            <div class="language_button { preferredLanguage === 'en' ? 'active' : ''}" onclick={() => setLanguage('en')} role="button" tabindex="1">
+            <div class="language_button { preferredLanguage === 'en' ? 'active' : ''}" onclick={() => setLanguage('en')} onkeydown={(e) => handleKey(e, 'en')} role="button" tabindex="1">
                 en
             </div>
         </div>

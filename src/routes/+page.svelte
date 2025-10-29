@@ -217,8 +217,9 @@
     }
 
     .leni_footer {
-        text-align: center;
+        margin-top: 10px;
         padding: 15px 0;
+        text-align: center;
     }
 
     .leni_footer .book_link {
@@ -247,14 +248,9 @@
         opacity: 0.7;
     }
 
-    @media (max-width: 850px) {
-        .begin_button.glitch {
-            font-size: 30px;
-        }
-    }
-
     @media (max-width: 1023px) {
         .leni_footer {
+            margin-top: 0;
             position: fixed;
             bottom: 0;
             left: 0;
@@ -263,6 +259,12 @@
 
         .quest_wrapper {
             margin-top: 0;
+        }
+    }
+
+    @media (max-width: 850px) {
+        .begin_button.glitch {
+            font-size: 30px;
         }
     }
 

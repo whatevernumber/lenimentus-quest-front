@@ -34,4 +34,10 @@
             height: 130px;
         }
     }
+
+    @media (max-height: 750px) {
+        .options {
+            margin-top: 0;
+        }
+    }
 </style>

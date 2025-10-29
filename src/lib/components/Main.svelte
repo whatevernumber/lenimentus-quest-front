@@ -64,6 +64,10 @@
         '3.1', '3.1.1', '3.1.2'
     ];
 
+    const noMusicStages = [
+        '3',
+    ];
+
     const stopMusicStage = '3';
     const successStage = '6.2';
 
@@ -110,6 +114,9 @@
     const audioFadeOut = (audio) => {
         setInterval(
             () => {
+                if (!audio || !audio?.volume) {
+                    return;
+                }
                 if (audio.volume > 0.1) {
                     audio.volume -= 0.1;
                 } else {
@@ -120,7 +127,7 @@
             }, 50);
     }
 
-    const playSoundEffect = (nextStage, action) => {
+    const playSoundEffect = (nextStage) => {
         let delay = 2500;
 
         if (audioEffect) {
@@ -132,9 +139,11 @@
         audioEffect.play();
         audioEffect.volume = 0.9;
 
-        setTimeout(async () => {
-            returnAudioVolume(mainAudio);
-        }, delay)
+        if (mainAudio && mainAudio?.volume) {
+            setTimeout(async () => {
+                returnAudioVolume(mainAudio);
+            }, delay)
+        }
     }
 
     // Stages
@@ -142,7 +151,9 @@
         actionLoading = true;
 
         if (nextStage && dangerMusicSwitchStages.some((el) => el === nextStage) || nextStage && endingStages.some((el) => el === nextStage) || nextStage === stopMusicStage) {
-            audioFadeOut(mainAudio);
+            if (mainAudio && mainAudio?.volume) {
+                audioFadeOut(mainAudio);
+            }
 
             if (audioEffect) {
                 audioEffect.pause();
@@ -150,7 +161,9 @@
         }
 
         if (action && specialSoundEffectsStages.some((el) => el === nextStage)) {
-            deVolumeAudio(mainAudio);
+            if (mainAudio && mainAudio?.volume) {
+                deVolumeAudio(mainAudio);
+            }
             playSoundEffect(nextStage, action);
         }
 
@@ -198,16 +211,7 @@
         if (!userStages.some((el) => el === stage)) {
             setUserData(stageDetails.stage[0]['quest.stage']);
         }
-
-        // Переходные stages
-        if (dangerMusicSwitchStages.some((el) => el === stage)) {
-            playMain(tracks.danger);
-        }
-
-        // Финальные stages
-        if (endingStages.some((el) => el === stage)) {
-            playEndingMusic(stage);
-        }
+        choseMusic(stage);
     }
 
     const setUserData = (data) => {
@@ -243,7 +247,6 @@
             localStorage.setItem("stages", JSON.stringify([stage]));
         }
 
-        choseMusic(stage);
         prepareForNextStage();
 
         // prevent from copying, selecting
@@ -260,7 +263,7 @@
             playMain(tracks.calm);
         } else if (endingStages.some((el) => el === stage)) {
             playEndingMusic(stage);
-        } else {
+        } else if (!noMusicStages.some((el) => el === stage)) {
             playMain(tracks.danger);
         }
     }

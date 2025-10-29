@@ -288,4 +288,11 @@
             letter-spacing: 0.5em;
         }
     }
+
+    @media (max-height: 750px) {
+        .leni_footer {
+            margin-top: 5px;
+            padding: 15px 0 5px;
+        }
+    }
 </style>

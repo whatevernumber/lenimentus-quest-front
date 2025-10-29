@@ -101,6 +101,10 @@
         let delay = 0;
 
         if (mainAudio) {
+            // keep playing the same track, if the previous and next stage both include it
+            if (mainAudio.src.split('/').pop() === track.split('/').pop()) {
+                return;
+            }
             stopMusic();
             delay = 1800;
         }

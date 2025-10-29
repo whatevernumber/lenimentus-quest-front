@@ -141,4 +141,10 @@
             width: 100%;
         }
     }
+
+    @media (max-height: 750px) {
+        .content {
+            padding: 10px 20px 20px;
+        }
+    }
 </style>

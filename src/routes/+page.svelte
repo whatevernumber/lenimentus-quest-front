@@ -217,9 +217,13 @@
     }
 
     .leni_footer {
-        margin-top: 10px;
+        margin-top: 20px;
         padding: 15px 0;
+        display: flex;
+        column-gap: 15px;
         text-align: center;
+        align-items: center;
+        justify-content: center;
     }
 
     .leni_footer .book_link {
@@ -228,7 +232,6 @@
 
     .copyright {
         cursor: pointer;
-        margin-top: 10px;
     }
 
     .book_link,
@@ -273,23 +276,18 @@
             display: block;
         }
 
-        .leni_footer {
-            display: flex;
-            column-gap: 15px;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .copyright {
-            margin-top: 0;
-        }
-
         .copyright, .book_link {
             letter-spacing: 0.5em;
         }
     }
 
-    @media (max-height: 750px) {
+    @media (max-height: 750px) and (min-width: 768px) {
+        .leni_footer .book_link {
+            display: block;
+        }
+    }
+
+    @media (max-height: 750px) and (min-width: 768px) {
         .leni_footer {
             margin-top: 5px;
             padding: 15px 0 5px;
